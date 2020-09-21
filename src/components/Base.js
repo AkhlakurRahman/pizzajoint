@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const containerVairent = {
+const containerVairant = {
   initial: {
     opacity: 0,
     x: '100vw',
@@ -15,9 +15,13 @@ const containerVairent = {
       delay: 0.5,
     },
   },
+  exit: {
+    x: '-100vw',
+    transition: { ease: 'easeInOut' },
+  },
 };
 
-const nextVarients = {
+const nextVariants = {
   initial: {
     x: '-100vw',
   },
@@ -36,9 +40,10 @@ const Base = ({ addBase, pizza }) => {
   return (
     <motion.div
       className='base container'
-      variants={containerVairent}
+      variants={containerVairant}
       initial='initial'
       animate='animateIn'
+      exit='exit'
     >
       <h3>Step 1: Choose Your Base</h3>
       <ul>
@@ -62,7 +67,7 @@ const Base = ({ addBase, pizza }) => {
       </ul>
 
       {pizza.base && (
-        <motion.div className='next' variants={nextVarients}>
+        <motion.div className='next' variants={nextVariants}>
           <Link to='/toppings'>
             <motion.button
               whileHover={{

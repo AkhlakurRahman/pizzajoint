@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const containerVairent = {
+const containerVairant = {
   initial: {
     opacity: 0,
     x: '100vw',
@@ -17,9 +17,13 @@ const containerVairent = {
       staggerChildren: 0.4,
     },
   },
+  exit: {
+    x: '-100vw',
+    transition: { ease: 'easeInOut' },
+  },
 };
 
-const childrenVarient = {
+const childrenVariant = {
   initial: {
     opacity: 0,
   },
@@ -32,16 +36,17 @@ const Order = ({ pizza }) => {
   return (
     <motion.div
       className='container order'
-      variants={containerVairent}
+      variants={containerVairant}
       initial='initial'
       animate='animateIn'
+      exit='exit'
     >
       <h2>Thank you for your order :</h2>
 
-      <motion.div variants={childrenVarient}>
+      <motion.div variants={childrenVariant}>
         <p>You ordered a {pizza.base} pizza with:</p>
       </motion.div>
-      <motion.div variants={childrenVarient}>
+      <motion.div variants={childrenVariant}>
         {pizza.toppings.map((topping) => (
           <div key={topping}>{topping}</div>
         ))}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const containerVairent = {
+const containerVairant = {
   initial: {
     opacity: 0,
     x: '100vw',
@@ -14,6 +14,10 @@ const containerVairent = {
       type: 'spring',
       delay: 0.5,
     },
+  },
+  exit: {
+    x: '-100vw',
+    transition: { ease: 'easeInOut' },
   },
 };
 
@@ -30,9 +34,10 @@ const Toppings = ({ addTopping, pizza }) => {
   return (
     <motion.div
       className='toppings container'
-      variants={containerVairent}
+      variants={containerVairant}
       initial='initial'
       animate='animateIn'
+      exit='exit'
     >
       <h3>Step 2: Choose Toppings</h3>
       <ul>
